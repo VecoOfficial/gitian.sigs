@@ -5,10 +5,10 @@ import subprocess
 def verify(version):
     global workdir
 
-    # Checkout proper dash tag
-    os.chdir('dash')
+    # Checkout proper veco tag
+    os.chdir('veco')
 
-    ignore_dir = ['.git', '.github', 'dash', 'gitian-builder', 'archive', 'gitian-keys']
+    ignore_dir = ['.git', '.github', 'veco', 'gitian-builder', 'archive', 'gitian-keys']
 
     for d in ignore_dir:
         if d in version:
@@ -45,7 +45,7 @@ def verify(version):
         assert False
 
     result = subprocess.call(
-        ['bin/gverify', '-v', '-d', '../', '-r', version, '../dash/contrib/gitian-descriptors/' + gitian_yml])
+        ['bin/gverify', '-v', '-d', '../', '-r', version, '../Veco/contrib/gitian-descriptors/' + gitian_yml])
     assert result == 0
 
 
